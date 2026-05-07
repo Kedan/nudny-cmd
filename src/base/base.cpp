@@ -1,4 +1,4 @@
-#include <nudny/base/base.hpp>
+#include <nudny/base.hpp>
 
 namespace nudny::base {
 }; // nudny base

@@ -58,5 +58,5 @@ if(ENABLE_SANITIZERS)
 	add_link_options(${SANITAZER_FLAGS})
 endif()
 
-add_subdirectory(test)
+add_subdirectory(${TESTS_DIR})
 add_library(${MOD_ALIAS} ALIAS ${MOD_NAME})
