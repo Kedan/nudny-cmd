@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.24)
 
 set(MOD_NAME "nudny-arg-parser")
 set(MOD_DESC "application argument parser")
@@ -11,10 +11,10 @@ set(SUBMOD_DIR "submodule")
 
 
 project(${MOD_NAME} VERSION 0.1.0 DESCRIPTION ${MOD_DESC})
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS, " -Wall -Wextra -Wpedantic")
-
 
 set(SANITIZER_FLAGS, "")
 add_custom_target(${MOD_NAME}_coverage
@@ -78,5 +78,5 @@ if(ENABLE_SANITIZERS)
 	add_link_options(${SANITAZER_FLAGS})
 endif()
 
-add_subdirectory(test)
+add_subdirectory(${TESTS_DIR})
 add_library(${MOD_ALIAS} ALIAS ${MOD_NAME})
