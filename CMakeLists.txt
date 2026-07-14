@@ -6,11 +6,12 @@ set(CMAKE_CXX_FLAGS " -Wall -Wextra -Wpedantic")
 set(SANITIZER_FLAGS "")
 
 
-set(MOD_NAME "nudny-baseline")
+set(MOD_NAME "nudny-cmd")
+set(APP_NAME "nudny-cmd-app")
 set(MOD_DESCRIPTION "Baseline for eny other project")
 set(MOD_VERSION 0.0.1)
-set(MOD_DIR "nudny/baseline")
-set(MOD_ALIAS "nudny::baseline")
+set(MOD_DIR "nudny/cmd")
+set(MOD_ALIAS "nudny::cmd")
 
 option(RELEASE "Relese" OFF)
 option(ENABLE_VALGRIND "Enable Valgrind" OFF)
@@ -36,27 +37,29 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_library(${MOD_NAME}
-	src/${MOD_DIR}/baseline.cpp
+	src/${MOD_DIR}/cli_parser.cpp
 )
 
-add_executable("App" 
-	src/${MOD_DIR}/baseline.cpp
+add_executable(${APP_NAME} 
+	src/${MOD_DIR}/cli_parser.cpp
 	src/main.cpp
 )
 
 target_include_directories(${MOD_NAME}
 	PUBLIC
 	include
+	submodule/nlohmann/include
 )
 
-target_include_directories("App"
+target_include_directories(${APP_NAME}
 	PUBLIC
 	include
+	submodule/nlohmann/include
 )
 
 if(ENABLE_CLANG_TIDY)
 	set_property(TARGET ${MOD_NAME} PROPERTY CXX_CLANG_TIDY clang-tidy)
-	set_property(TARGET App PROPERTY CXX_CLANG_TIDY clang-tidy)
+	set_property(TARGET ${APP_NAME} PROPERTY CXX_CLANG_TIDY clang-tidy)
 endif()
 
 if(RELEASE)
