@@ -1,8 +1,7 @@
-#include <nudny/baseline/baseline.hpp>
+#include <nudny/cmd.hpp>
 #include <iostream>
 
 int main(int argc, char* argv[]) {
-	nudny::baseline::Baseline b;
-	std::cout << "Hello World!\nVersion: " << b.version << "\n";
+	std::cout << "Hello World!\nVersion: " << argc <<" " << argv << "\n";
 	return 0;
 }
