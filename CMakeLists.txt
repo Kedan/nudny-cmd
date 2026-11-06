@@ -41,7 +41,7 @@ add_library(${MOD_NAME}
 )
 
 add_executable(${APP_NAME} 
-	src/${MOD_DIR}/baseline.cpp
+	src/nudny/baseline/baseline.cpp
 	src/${MOD_DIR}/cli_parser.cpp
 	src/main.cpp
 )
